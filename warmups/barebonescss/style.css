@@ -1,4 +1,21 @@
 #text {
-    font-family: "Georgia", Times New Roman, sans-serif;
-    background-color: blueviolet
+    font-family: 'PT Serif', serif;
+    color: #ff00ac;
+    font
+        
 }
+
+#differentlist {
+    list-style-type: disc;
+    font-family: 'Playfair Display', serif;
+}
+
+.small {
+    color: chartreuse;
+}
+
+
+/*FONTS FROM GOOGLE
+/*font-family: 'Playfair Display', serif;
+font-family: 'Arimo', sans-serif;
+font-family: 'PT Serif', serif;
