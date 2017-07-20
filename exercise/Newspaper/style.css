@@ -1,0 +1,19 @@
+#name {
+    text-align: center;
+    font-family: "courier-new";
+}
+
+section {
+    display: inline-block;
+    width: 33%;
+    vertical-align: top;
+}
+
+img {
+    width: 43%;
+}
+
+.highlight{
+    background-color: darkkhaki;
+    
+}
