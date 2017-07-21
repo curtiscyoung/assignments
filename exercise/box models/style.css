@@ -1,0 +1,47 @@
+#top {
+    background-color: #F5C6D6;
+    margin: 2px 10px 6px 1px;
+    border: 9px white solid;
+    height: 108px;
+    width: 89%
+}
+
+.middle {
+    height: 108px;
+    background-color: #EE2E84;
+    display: inline-block;
+    border: 9px white solid;
+    width: 21%;
+}
+
+.bottommid {
+    height: 108px;
+    background-color: #85CFD8;
+    display: inline-block;
+    width: 44%;
+    border: 9px white solid;
+}
+
+#secondrow {
+    width: 100%;
+}
+
+#thirdrow {
+    width: 99%;
+}
+
+#left {
+    width: 65%;
+    background-color: #8DC63F;
+    height: 108px;
+    border: 9px white solid;
+    display: inline-block;
+}
+
+#right {
+    height: 108px;
+    background-color: #E76E34;
+    display: inline-block;
+    width: 22%;
+    border: 9px white solid;
+}

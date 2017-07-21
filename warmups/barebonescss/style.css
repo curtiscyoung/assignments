@@ -1,7 +1,7 @@
 #text {
     font-family: 'PT Serif', serif;
     color: #ff00ac;
-    font
+    display: inline-block
         
 }
 
@@ -12,6 +12,13 @@
 
 .small {
     color: chartreuse;
+}
+
+#list {
+    display: inline-block;
+    text-align: center;
+    width: 20px;
+    
 }
 
 
