@@ -5,7 +5,8 @@ body {
 h1 {
     color: #E2E80F;
     text-align: center;
-    font-size: 2em;
+    font-size: 2em;'
+    display: inline-block
 }
 
 p {
