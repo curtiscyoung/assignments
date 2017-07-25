@@ -14,3 +14,16 @@ function slash(a,b){
 }
 
 slash(2,5);
+
+var nums = [34234, 4, 432, 15, 78, 1000, 10];
+
+function checkNum(numbers){
+   return numbers>100;}
+   
+
+function filterNum(){
+    return nums.filter(checkNum);
+    
+  }
+  
+  filterNum(nums);

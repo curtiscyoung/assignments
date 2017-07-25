@@ -1,24 +1,27 @@
 body {
-    font-family: 
-    
+    font-family:
 }
 
 #name {
     text-align: center;
-    font-family: "courier-new";
+    font-family: courier;
+    text-decoration: underline;
 }
 
 section {
     display: inline-block;
-    width: 33%;
+    width: 28%;
     vertical-align: top;
+    text-align: justify;
+    padding: 0px 25px 0px 1px;
+    font-size: 14px;
+    font-family: 'Droid Sans Mono', monospace;
 }
 
 img {
     width: 43%;
 }
 
-.highlight{
+.highlight {
     background-color: darkkhaki;
-    
 }
