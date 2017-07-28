@@ -76,6 +76,61 @@ var backpack = {
 
 }
 
+var stereo = {
+    loud : true,
+    components : ["tuner", "turn table", "cd changer", "receiver"],
+    bass : "d-d-d-d-d-drop da bass",
+    myStereo : function (){
+        var system = this.components.join(","),
+        return system;
+    }
+    
+}
 
+var painting = {
+    colors : ["blue", "peach", "white", "black"],
+    shape : "rectangular",
+    beautiful : true,
+    paintingBackground : function(){
+        var background = this.colors.shift();
+        return background;
+        
+    }
+    
+}
 
-console.log(backpack.completed);
+var oldAcoustic = {
+    colors: ["sunburst", "brown"],
+    broken : true,
+    depressing : true,
+    amountofColors : function(){
+        var beautiful = this.colors.length;
+        return beautiful;
+    }
+    
+    
+};
+
+var newAcoustic = {
+    brand : "Fender",
+    broken : false,
+    strings : ["E", "A", "D", "G", "B", "e"],
+    dropDTuning : function(){
+        var dropD = this.strings.splice(0,1,"D");
+        return dropD;
+        
+    }
+    
+}
+
+var tubeTv = {
+    old : true,
+    hookedUp : ["VCR", "Super Nintendo", "Sega Genesis"],
+    movies : ["Citizen Kane", "Dogma", "Star Wars: The Empire Strikes Back",],
+    vcrPlayer : function(){
+        var player = this.hookedUp.shift();
+        var movie = this.movies[2];
+        console.log ("The " + player + "is now playing " + movie);
+    }
+    
+}

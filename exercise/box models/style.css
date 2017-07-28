@@ -1,9 +1,13 @@
+* {
+    box-sizing: border-box;
+    font-size: 0px;
+}
+
 #top {
     background-color: #F5C6D6;
-    margin: 2px 10px 6px 1px;
     border: 9px white solid;
     height: 108px;
-    width: 89%
+    width: 100%;
 }
 
 .middle {
@@ -11,27 +15,19 @@
     background-color: #EE2E84;
     display: inline-block;
     border: 9px white solid;
-    width: 21%;
+    width: 25%;
 }
 
 .bottommid {
     height: 108px;
     background-color: #85CFD8;
     display: inline-block;
-    width: 44%;
+    width: 50%;
     border: 9px white solid;
 }
 
-#secondrow {
-    width: 100%;
-}
-
-#thirdrow {
-    width: 99%;
-}
-
 #left {
-    width: 65%;
+    width: 75%;
     background-color: #8DC63F;
     height: 108px;
     border: 9px white solid;
@@ -42,6 +38,195 @@
     height: 108px;
     background-color: #E76E34;
     display: inline-block;
-    width: 22%;
+    width: 25%;
     border: 9px white solid;
+}
+
+@media (min-width:1300px) and (max-width: 1400px) {
+    #top {
+        height: 98px;
+        border: 8px white solid;
+    }
+    .middle {
+        height: 98px;
+        border: 8px white solid;
+    }
+    .bottommid {
+        height: 98px;
+        border: 8px white solid;
+    }
+    #left {
+        height: 98px;
+        border: 8px white solid;
+    }
+    #right {
+        height: 98px;
+        border: 8px white solid;
+    }
+}
+
+@media (min-width:1200px) and (max-width: 1300px) {
+    #top {
+        height: 88px;
+        border: 7px white solid;
+    }
+    .middle {
+        height: 88px;
+        border: 7px white solid;
+    }
+    .bottommid {
+        height: 88px;
+        border: 7px white solid;
+    }
+    #left {
+        height: 88px;
+        border: 7px white solid;
+    }
+    #right {
+        height: 88px;
+        border: 7px white solid;
+    }
+}
+
+@media (min-width:1100px) and (max-width: 1200px) {
+    #top {
+        height: 78px;
+        border: 7px white solid;
+    }
+    .middle {
+        height: 78px;
+        border: 7px white solid;
+    }
+    .bottommid {
+        height: 78px;
+        border: 7px white solid;
+    }
+    #left {
+        height: 78px;
+        border: 7px white solid;
+    }
+    #right {
+        height: 78px;
+        border: 7px white solid;
+    }
+}
+
+@media (min-width:1000px) and (max-width: 1100px) {
+    #top {
+        height: 68px;
+        border: 6px white solid;
+    }
+    .middle {
+        height: 68px;
+        border: 6px white solid;
+    }
+    .bottommid {
+        height: 68px;
+        border: 6px white solid;
+    }
+    #left {
+        height: 68px;
+        border: 6px white solid;
+    }
+    #right {
+        height: 68px;
+        border: 6px white solid;
+    }
+}
+
+@media (min-width:900px) and (max-width: 1000px) {
+    #top {
+        height: 58px;
+        border: 5px white solid;
+    }
+    .middle {
+        height: 58px;
+        border: 5px white solid;
+    }
+    .bottommid {
+        height: 58px;
+        border: 5px white solid;
+    }
+    #left {
+        height: 58px;
+        border: 5px white solid;
+    }
+    #right {
+        height: 58px;
+        border: 5px white solid;
+    }
+}
+
+@media (min-width:800px) and (max-width: 900px) {
+    #top {
+        height: 48px;
+        border: 4px white solid;
+    }
+    .middle {
+        height: 48px;
+        border: 4px white solid;
+    }
+    .bottommid {
+        height: 48px;
+        border: 4px white solid;
+    }
+    #left {
+        height: 48px;
+        border: 4px white solid;
+    }
+    #right {
+        height: 48px;
+        border: 4px white solid;
+    }
+}
+
+@media (min-width:767px) and (max-width: 800px) {
+    #top {
+        height: 38px;
+        border: 3px white solid;
+    }
+    .middle {
+        height: 38px;
+        border: 3px white solid;
+    }
+    .bottommid {
+        height: 38px;
+        border: 3px white solid;
+    }
+    #left {
+        height: 38px;
+        border: 3px white solid;
+    }
+    #right {
+        height: 38px;
+        border: 3px white solid;
+    }
+}
+
+@media (max-width: 768px) {
+    #top {
+        height: 28px;
+        width: 100%;
+        border: 1px white solid;
+    }
+    .middle {
+        height: 28px;
+        width: 100%;
+        border: 1px white solid;
+    }
+    .bottommid {
+        height: 28px;
+        width: 100%;
+        border: 1px white solid;
+    }
+    #left {
+        height: 28px;
+        width: 100%;
+        border: 1px white solid;
+    }
+    #right {
+        height: 28px;
+        width: 100%;
+        border: 1px white solid;
+    }
 }
