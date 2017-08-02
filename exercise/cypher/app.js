@@ -8,18 +8,14 @@ var alphabet = "abcdefghijklmnopqrstuvwxyz";
 var Capsalphabet = alphabet.toUpperCase();
 
 for (var i = 0; i < input.length; i++) {
-    if (alphabet.indexOf(input[i]) > -1); {
-        var newIndex = alphabet.indexOf(input[i]) + shift
-        if (newIndex >= 25) {
-            newIndex -= 26
-        }
+    if (alphabet.indexOf(input[i]) > -1) {
+        var newIndex = alphabet.indexOf(input[i]) + shift;
+        newIndex %= 26
         result += alphabet[newIndex];
 
     } else if (Capsalphabet.indexOf(input[i]) > -1) {
         var newIndex = Capsalphabet.indexOf(input[i]) + shift;
-        if (newIndex >= 25) {
-            newIndex -= 26
-        }
+        newIndex %= 26
         result += Capsalphabet[newIndex];
     } else {
         result += input[i];
