@@ -1,0 +1,53 @@
+img {
+    display: inline-block;
+}
+
+.baddie {
+    height: 100px;
+    width: 100px;
+}
+
+body {
+    --background-color: #ffff66;
+    background-color: #93a1e4;
+}
+
+.navigate {
+    font-family: '8BITWONDERNominal';
+    font-weight: normal;
+    font-style: normal;
+    margin: 0px 20px;
+}
+
+    .imgwrapper {
+    min-height: 200px;
+    margin-bottom: 50px;
+    background: url(https://images-production.global.ssl.fastly.net/uploads/posts/image/122870/successful-video-games-history-fhm.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: 75%;
+}
+
+.imgwrapper h1 {
+    font-family: '8BITWONDERNominal';
+    font-weight: normal;
+    font-style: normal;
+    color: mintcream;
+    text-shadow: 7px 9px forestgreen;
+}
+
+.container p {
+    font-family: '8BITWONDERNominal';
+    font-weight: normal;
+    font-style: normal;
+}
+
+.imgbuttons {
+    margin: 42px 0px;
+}
+
+.imgbutton input {
+    font-family: '8BITWONDERNominal';
+    font-weight: normal;
+    font-style: normal;
+}
