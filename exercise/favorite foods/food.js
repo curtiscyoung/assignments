@@ -12,6 +12,7 @@ var pizza = {
 
 
 var burger = {
+    ingredients: ["meat", "cheesse", "lettuce", "tomatoes", "mayo", "mustard"];
     
     
 }

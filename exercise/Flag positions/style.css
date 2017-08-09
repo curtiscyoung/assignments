@@ -1,0 +1,130 @@
+.Sweden {
+    height: 16em;
+    width: 30em;
+    background-color: #fecc00;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.sweden-top-left {
+    height: 6em;
+    width: 9em;
+    background-color: #006aa7;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.sweden-bottom-left {
+    height: 6em;
+    width: 9em;
+    background-color: #006aa7;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.sweden-top-right {
+    height: 6em;
+    width: 17em;
+    background-color: #006aa7;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.sweden-bottom-right {
+    height: 6em;
+    width: 17em;
+    background-color: #006aa7;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.Norway {
+    height: 16em;
+    width: 30em;
+    background-color: white;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.norway-top-left {
+    height: 6em;
+    width: 9em;
+    background-color: #ef2b2d;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.norway-bottom-left {
+    height: 6em;
+    width: 9em;
+    background-color: #ef2b2d;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.norway-top-right {
+    height: 6em;
+    width: 17em;
+    background-color: #ef2b2d;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.norway-bottom-right {
+    height: 6em;
+    width: 17em;
+    background-color: #ef2b2d;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.norway-middle-bar-tall {
+    height: 16em;
+    width: 2em;
+    background-color: #002868;
+    position: absolute;
+    bottom: 0;
+    left: 33%;
+}
+
+.norway-middle-bar-long {
+    height: 2em;
+    width: 30em;
+    background-color: #002868;
+    position: absolute;
+    bottom: 45%;
+}
+
+.Finland {
+    height: 16em;
+    width: 30em;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.finland-top-left {
+    height: 6em;
+    width: 9em;
+    background-color: #003580;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.finland-top-right{
+    height: 6em;
+    width: 17em;
+    background-color: #003580;
+    position: absolute;
+    top: 0;
+    right: 0;
+    
+}

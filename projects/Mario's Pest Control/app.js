@@ -16,3 +16,7 @@ function grandTotal() {
 }
 
 document.getElementById("button").addEventListener("click", grandTotal);
+
+addEventListener("input", function) {
+    parseInt(document.getElementById"goombainput")
+}

@@ -12,12 +12,12 @@ function stringLoop(str) {
 function firstLetter(str, char) {
     for (var i = 0; i <= str.length; i++) {
         if (str.charAt(i) === char) {
-            return i;
-        } else {
-            console.log("thats not in there");
-        }
+            return str.charAt(i);
+        } 
     }
+    console.log("thats not in there");
 }
+
 
 var nums = [23, 42, 45, 56, 7, 8000, 456];
 

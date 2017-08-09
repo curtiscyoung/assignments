@@ -1,0 +1,28 @@
+.background {
+    background-color: #cf703e;
+    
+}
+
+.greenbar {
+    background-color: #9aaf55;
+    
+}
+
+.info {
+    margin-right: 39px;
+    margin-left: 30px;
+    margin-top: 35px;
+    padding: 18px;
+    border: 1px yellow solid;
+    border-radius : 2%;
+}
+
+h1 h2 h3 p {
+    position: absolute;
+    
+}
+
+h2 {
+    color: #fcd57b;
+    
+}
