@@ -10,7 +10,10 @@ var cheepcheepAmount = 5;
 function grandTotal() {
     var total = (goombaCost * goombaAmount) + (bobombCost * bobombAmount) + (cheepcheepCost * cheepcheepAmount);
     console.log (total);
-    document.getElementById("totalCost").innerHTML = ("<h1>" + total + "</h1>")
+    var cost = document.getElementById("totalCost");
+    var h1 = document.createElement("h1");
+    cost.appendChild(h1);
+    h1.innerHTML = total;
 
 
 }

@@ -1,0 +1,28 @@
+{ 
+    "menu" : {
+            "appetizers" : [ 
+                { "item" : "Bread Sticks",
+                  "ingredients" : ["garlic", "bread", "seasoning"],
+                  "description" : "delicious crunchy breadsticks with garlic seasoning" } ,
+                { "item" : "Nachos",
+                  "ingredients" : ["chips", "salsa", "cheese"],
+                  "description" : "spice things up with fiery nachos"},
+                { "item" : "Wings",
+                  "ingredients" : ["chicken wings", "bbq sauce", "spicy sauce"],
+                  "description" : "choose between spicy or original wings" } 
+                ],
+            "cold sandwiches" : [
+                { "item" : "Turkey",
+                  "ingredients" : ["Turkey", "Mayo", "Lettuce"],
+                  "description" : "A Turkey sandwich."},
+                { "item" : "Ham",
+                  "ingredients" : ["Ham", "Mayo or Mustard", "Lettuce"],
+                  "description" : "Ham Sandwich."},
+                { "item" : "Pastrami",
+                  "ingredients" : ["Pastrami", "Spicy Mustard", "Olives"],
+                  "description" : "Pastrami sandwich"}
+                ]  
+            }
+        
+}
+    

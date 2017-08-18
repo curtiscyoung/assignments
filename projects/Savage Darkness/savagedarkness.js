@@ -1,17 +1,23 @@
 var readline = require("readline-sync");
-var shield = 0;
+var mirrorShield = 0;
 var shieldUpgrade = false;
 var sword = 0;
+var swordUpgrade = false;
+var ancientSword = 0;
+var magicSword = 0;
 var doorkey = 0;
 var boss = true;
 var orc = 1;
-var torch = 1;
+var torch = 0;
 var playerDead = false;
 var location = "center";
 var gorgonHead = 0;
 var ogre = 1;
 var nextLevel = 1;
+var stalkerLocation = "";
 
+
+//Aj suggested having a "stalker" that follows you throught out the game.  have a function that runs a random number, and if lands on a certain value, it changes the "stalkerlocation" variable, and then run a function that checks the players location.  if they match, run a function where the player encounters the stalker.
 
 ///now that we know we can adjust values by checking strings inside of objects, let's make an equipped object, which represents what the character is wearing.  We'll make it so a character has to EQUIP a certain item before certain fights.  I'm thinking that we will have a hint or something that explains how it works later in the game, we won't really have it be relevant until you start getting different types of items.  We can have helmets and armor that increase stats, or weapons that unlock special attacks.  Just brainstorming.
 
@@ -59,21 +65,29 @@ if (gender === "boy" || gender === "man") {
     console.log("Oh...well...we're respectful of all kinds of people here i really didn't mean to offend please forgive me everyone has  a right to choose what they do with their bodies this seems a little longwinded I'm talking too much aren't I oh well thank you errrr WhateverTheFuckYouAre " + lastname);
 }
 
+
+
+////////////////////////////////
+////////CLASS OBJECTS///////////
+////////////////////////////////
+
 var warrior = {
     type: "WARRIOR",
     str: 15,
+    def: 10,
     int: 4,
     luk: 6,
-    hp: 150,
+    hp: 50,
     exp: 0
 };
 
 var wizard = {
     type: "WIZARD",
     str: 4,
+    def: 4,
     int: 15,
     luk: 8,
-    hp: 80,
+    hp: 25,
     exp: 0
 
 };
@@ -81,12 +95,51 @@ var wizard = {
 var thief = {
     type: "THIEF",
     str: 9,
+    def: 7,
     int: 8,
     luk: 15,
-    hp: 100,
+    hp: 35,
     exp: 0
 
 };
+
+////////////////////////
+/////////////////////////
+
+///////////////////////////////
+///////ENEMY OBJECTS LVL 1/////
+///////////////////////////////
+
+
+var goblin = {
+    type: "GOBLIN",
+    str: 12,
+    def: 10,
+    magDef: 5,
+    hp: 50
+}
+
+var insanePrisoner = {
+    type: "PRISONER",
+    str: 25,
+    def: 5,
+    magDef: 3,
+    hp: 60
+}
+
+var skeletonKnight = {
+    type: "SKELKNIGHT",
+    str: 12,
+    def: 10,
+    magDef: 5,
+    hp: 50
+}
+
+var currentEnemy = {};
+
+/////////////////////////////
+/////////////////////////////
+
 
 console.log("");
 
@@ -134,7 +187,9 @@ while (playerDead === true) {
 /////INVENTORY FUNCTION///////
 
 function inventory() {
-    console.log("doorkey: " + doorkey + " sword: " + sword + " shield: " + shield + " torch: " + torch + " gorgonhead: " + gorgonHead);
+    console.log("")
+    console.log("Doorkey: " + doorkey + " Sword: " + sword + " Mirror Shield: " + mirrorShield + " Torch: " + torch + " Gorgon Head: " + gorgonHead);
+    console.log("");
 
 }
 
@@ -145,8 +200,8 @@ function inventory() {
 ///////LEVEL UP FUNCTIONS//////
 ///////////////////////////////
 
-function checkExp(){
-    if (character.exp >= nextLevel){
+function checkExp() {
+    if (character.exp >= nextLevel) {
         levelUp();
     }
 }
@@ -154,23 +209,27 @@ function checkExp(){
 function levelUp() {
     console.log("");
     console.log("YOU LEVELED UP!")
-    
+
     if (character.type === "THIEF") {
         character.hp = character.hp + 10;
         character.luk = character.luk + 5;
         character.int = character.int + 1;
-        character.str = character.str + 2;
+        character.str = character.str + 3;
+        character.def = character.def + 3;
     } else if (character.type === "WARRIOR") {
         character.hp = character.hp + 20;
         character.luk = character.luk + 1;
         character.int = character.int + 0;
         character.str = character.str + 5;
+        character.def = character.def + 5;
     } else if (character.type === "WIZARD") {
         character.hp = character.hp + 5;
         character.luk = character.luk + 1;
         character.int = character.int + 5;
         character.str = character.str + 0;
-    } console.log( name + " " + lastname + ": ")
+        character.def = character.def + 2;
+    }
+    console.log(name + " " + lastname + ": ")
     console.log(character);
     nextLevel = nextLevel * 2;
 }
@@ -263,6 +322,9 @@ function question() {
     } else if (phase === "inv") {
         inventory();
         question();
+    } else if (phase === "test") {
+        encounterW1();
+
     } else {
         console.log("");
         readline.question("That is not a command. Please type in a command listed");
@@ -370,7 +432,7 @@ function checkForKey() {
 }
 
 function orcShieldCheck() {
-    if (shield === 0) {
+    if (mirrorShield === 0) {
         stoneDeath();
     } else {
         gorgonReact();
@@ -378,7 +440,7 @@ function orcShieldCheck() {
 }
 
 function LakeShieldCheck() {
-    if (shield === 0) {
+    if (mirrorShield === 0) {
         fireballDeath();
     } else {
         fireballReact();
@@ -485,24 +547,24 @@ function orcPhase3() {
         orcPhase3();
     }
 
-function orcVictory() {
-    console.log("");
-    readline.question("You hold the torch as high as you can so you make light all around you. You still can't see past your shield, however, but you hear the orc start howling.  You feel yourself fill with fear, but the howling doesn't sound mocking anymore, it sounds pained, in agony.  It suddenly ends abrubtly, like a rock was shoved down his throat.  You wait a moment, and slowly lower your shield...the orc, he has been turned the stone.  He wasn't able to see his reflection until you illuminated the area around you, and it seems he held the gorgon head up to the mirror...nice work.  Sometimes defense is the best attack.")
-    console.log("");
-    readline.question("The gorgon head remains in his stone hands. You take it.  Maybe it'll come in handy.")
-    console.log("");
-    readline.question("YOU NOW POSSESS THE GORGON HEAD");
-    console.log("");
-    readline.question("You take the torch too.")
-    console.log("");
-    readline.question("YOU NOW POSSESS THE TORCH");
-    console.log("");
-    gorgonHead += 1;
-    torch += 1;
-    character.exp = character.exp + 4;
-    checkExp();
-    inventory();
-    orcDead();
+    function orcVictory() {
+        console.log("");
+        readline.question("You hold the torch as high as you can so you make light all around you. You still can't see past your shield, however, but you hear the orc start howling.  You feel yourself fill with fear, but the howling doesn't sound mocking anymore, it sounds pained, in agony.  It suddenly ends abrubtly, like a rock was shoved down his throat.  You wait a moment, and slowly lower your shield...the orc, he has been turned the stone.  He wasn't able to see his reflection until you illuminated the area around you, and it seems he held the gorgon head up to the mirror...nice work.  Sometimes defense is the best attack.")
+        console.log("");
+        readline.question("The gorgon head remains in his stone hands. You take it.  Maybe it'll come in handy.")
+        console.log("");
+        readline.question("YOU NOW POSSESS THE GORGON HEAD");
+        console.log("");
+        readline.question("You take the torch too.")
+        console.log("");
+        readline.question("YOU NOW POSSESS THE TORCH");
+        console.log("");
+        gorgonHead += 1;
+        torch += 1;
+        character.exp = character.exp + 4;
+        checkExp();
+        inventory();
+        orcDead();
     }
 
 }
@@ -574,6 +636,7 @@ function dead() {
 
 
 function holeChoice() {
+    location = "hole";
     console.log("");
     var choice = readline.question("The hole is open wide. You notice that it splits into two directions.  You see something shiny gleam within the darkness somewhere in the right cave....the key?  You hear someone mumbling in the other cave.  Perhaps someone who can help?  Or a madman waiting to slit your throat.  Alas, you must perservere. What will you do?  COMMANDS:  left, right, back, inv       ")
     if (choice === "right") {
@@ -637,7 +700,7 @@ function cave() {
     console.log("");
     readline.question("You enter a large spacious room. There are mirrors everywhere.  Even moments after stepping in, your orientation is skewed.  You see there are reflections of yourself everywhere, it is impossible to tell how to leave, you end up running into a reflective surface.  You wander aimlessly, before suddenly you feel enclosed between 4 reflections of yourself, one North, one South, one West, and one East.  You can't seem to get out, it's an enclosed box.");
     console.log("");
-    console.log("You return to the center of your mirror box.  The reflections suddenly unsheath swords!  They all raise them in unison and prepare to execute you with a downward slash. You gamble that maybe one of the reflections can't hurt you...are you going crazy?  Can reflections hurt you? Regardless, there's no where to run but towards one of the reflections.");
+    console.log("You suddenly feel your body unconciously shift to the center of the ''room'', like some unknown force put you there. The reflections suddenly unsheath swords!  They all raise them in unison and prepare to execute you with a downward slash. You gamble that maybe one of the reflections can't hurt you...are you going crazy?  Can reflections hurt you? Regardless, there's no where to run but towards one of the reflections.");
     console.log("");
     var choice = readline.question("Which mirror do you run towards?  COMMANDS>>>>> NORTH SOUTH EAST WEST     ").toLowerCase();
     if (choice === "north" || choice === "n") {
@@ -649,14 +712,14 @@ function cave() {
 
 function MirrorDeath() {
     console.log("");
-    console.log("You choose wrong.  The sword comes directly down onto your head.  It chops you perfectly in half until your torso.  You stand split down the middle.  You really need to deal with some of your inner demons. ")
+    console.log("You choose wrong.  The sword comes directly down onto your head.  It chops you perfectly in half down to your torso.  You stand split down the middle.  You really need to deal with some of your inner demons. ")
     dead();
 
 }
 
 function MirrorWin1() {
     console.log("");
-    console.log("The mirror you choose's attack doesn't go past the mirror's surface.  You hug it's surface.  The other reflection's attacks, however, are very real.  You see three swords slash downwards and stop at a 90 degree angle to the floor.  Their tips meet in the middle of the room.  The swords are taken back into their reflections.  You feel yourself reorient to the center of the room.  The reflections raise their swords again.  You must choose again.")
+    console.log("The attack doesn't go past the mirror's surface.  You hug it's surface.  The other reflection's attacks, however, are very real.  You see three swords slash downwards and stop perpendicular  to the floor.  Their tips meet in the middle of the room.  The swords are taken back into their reflections.  You feel yourself reorient to the center of the room.  The reflections raise their swords again.  You must choose again.")
     console.log("");
     var choice = readline.question("What mirror do you run towards>>>NORTH SOUTH EAST WEST  ").toLowerCase();
     if (choice === "east" || choice === "e") {
@@ -668,7 +731,7 @@ function MirrorWin1() {
 
 function MirrorWin2() {
     console.log("");
-    var choice = readline.question("You are successful yet again.  You watch the swords come down again.  You are back in the center of the room.  They raise their swords.  How long can you keep doing this? Which mirror do you choose COMMANDS>>>>NORTH SOUTH EAST WEST   ")
+    var choice = readline.question("You are successful yet again.  You watch the swords come down.  You are back in the center of the room.  They raise their swords.  How long can you keep doing this? Which mirror do you choose>>>>NORTH SOUTH EAST WEST   ")
     if (choice === "south" || choice === "s") {
         MirrorWin3();
     } else {
@@ -678,26 +741,27 @@ function MirrorWin2() {
 
 function MirrorWin3() {
     console.log("");
-    readline.question("You run into your reflection and you actually feel the surface move forward.  You stumble but manage to keep your footing.  When you look up, all the reflective surfaces are gone.  You are back in cave.  There is a stout man on the ground.  He possesses no weapons, but he has a shield....a reflective shield.  It's a mirror shield.  He stands up.  ");
+    readline.question("You run into your reflection and you actually feel the surface move forward.  You stumble but manage to keep your footing.  When you look up, all the reflective surfaces are gone.  You are back in what appears to be a regular cave.  There is a stout man on the ground.  He possesses no weapons, but he has a shield....a reflective shield.  It's a mirror shield.  He stands up.  ");
     console.log("");
-    console.log(" 'You know yourself better than anybody.  I'm impressed.  Most people don't know which version of themselves to trust.  And now you're stronger' ");
+    readline.question(" 'You know yourself better than anybody.  I'm impressed.  Most people don't know which version of themselves to trust.  And now you're stronger' ");
     console.log("");
-    console.log("He gestures down at your hand.  You suddenly realize you are holding something.  The sword!  From the other versions of you, you hold it now. ");
+    readline.question("He gestures down at your hand.  You suddenly realize you are holding something.  The sword!  From the other versions of you, you hold it now. ");
     sword += 1;
-    console.log("YOU NOW POSSESS THE SWORD");
+    readline.question("YOU NOW POSSESS THE SWORD");
     console.log("");
-    console.log("'Take this too, I'm tired of projecting everyone onto themselves.' ");
+    readline.question("'Take this too, I'm tired of projecting everyone onto themselves.' ");
     console.log("");
-    console.log("He hands you his shield.");
+    readline.question("He hands you his shield.");
     console.log("");
-    console.log("Before you can thank him, he vanishes");
+    readline.question("Before you can thank him, he vanishes");
     console.log("");
-    console.log("YOU NOW POSSESS THE SHIELD");
-    shield += 1;
+    readline.question("YOU NOW POSSESS THE SHIELD");
+    mirrorShield += 1;
     console.log("");
     character.exp = character.exp + 4;
     checkExp();
     inventory();
+    readline.question("You head back out the way you came.")
     pathChoice();
 }
 
@@ -708,10 +772,10 @@ function pathBoulder() {
     console.log("");
     console.log("You continue down the path.  The path grows more and more narrow, you can barely stand on it, you hug the mountain wall.  You hear a loud thunderous crash above you.  You look up---boulders rain down from the above you!  You must react")
     console.log("");
-    var choice = readline.question("What do you do? LIST OF COMMANDS: run left, run right").toLowerCase();
-    if (choice === "run left") {
+    var choice = readline.question("What do you do? LIST OF COMMANDS>>>>>>RUN LEFT || RUN RIGHT").toLowerCase();
+    if (choice === "run left" || choice === "left") {
         boulderDeath();
-    } else if (choice === "run right") {
+    } else if (choice === "run right" || choice === "right") {
         boulderSurvive();
     } else {
         boulderHesitate();
@@ -720,13 +784,13 @@ function pathBoulder() {
 
 function boulderDeath() {
     console.log("");
-    console.log("you run to the left but you trip and fall off the cliff.  You grab onto the side of the path!  You hold on for dear life, thank god for you quick reactions...however...the boulders above are still hurdling down at you.  You can't react in time, one the size of a horse lands on your arms and breaks them off from your body. Your armless body falls 3,000 feet and you body explodes violently when it hits the bottom.  ")
+    console.log("you run to the left but trip and start to fall off the cliff.  You grab onto the side of the path!  You hold on for dear life, thank god for you quick reactions...however...the boulders above are still hurdling down at you.  You can't react in time, one the size of a horse lands on your arms and breaks them off from your body. You cry in agony for 3000 feet down....you bloodloss kills you before you can even reach the bottom....your corpse explodes on impact.")
     dead();
 }
 
 function boulderSurvive() {
     console.log("");
-    console.log("You run to the right.  You look up, and a boulder is hurling towards your face.  You quickly scan the side of the cliff for options.  You notice that there is a little inline in the wall that can protect you.  You go inside of it, and the boulder plummets pass you, just in the nick of time.  You wait for the rumbling to stop and get back on the path.  Nice work.  You continue down the path.")
+    console.log("You run to the right.  You look up---a hail of boulders plummets towards you.  You quickly scan the side of the cliff for options.  You notice that there is a little inline in the wall that can protect you.  You go inside of it, and the boulders plummets past you, just in the nick of time.  You wait for the rumbling to stop and get back on the path.  Nice work.  You continue down the path.")
     dyingAdventurer();
 }
 
@@ -752,31 +816,49 @@ function dyingAdventurer() {
 ////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////
+////////RANDOM FIGHT FUNCTIONS/////////////////////////
+///////////////////////////////////////////////////////
+
+
+function encounterW1() {
+    var encounter = [1, 2, 3, 4, 5, 6, 7, 8]
+    var chance = encounter[Math.floor(Math.random() * encounter.length)];
+    if (chance === 1 || chance === 3 || chance === 5 || chance === 8) {
+        console.log("");
+        console.log("an " + goblin.type + " appears!!!");
+    } else {
+        console.log("you continue safely");
+    }
+    question();
+}
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+
 console.log("");
 
-console.log("You find yourself in a dark room.  You can't see much, but the room feels large and spacious.  There is a large door with a big lock on it. There appears to be some sort of moving shape lumbering about in front of it, but it's too dark to tell.  It looks big. ");
+readline.question("You find yourself in a dark room.  You can't see much, but the room feels large and spacious.  There is a large iron double sided door.  There is an enormous lock, larger than any lock you've ever seen, keeping the door closed. ");
 
 console.log("");
 
-console.log("Off to your left, you see a flight of stairs, carved out from the stone and leading down into some darker pit.  The stairs disappear into total darkness, you can't see a thing.");
+readline.question("Off to your left, you see a flight of stairs, carved out from the stone and leading down into some darker pit.  The stairs disappear into total darkness, you can't see a thing.");
 
 console.log("");
 
-console.log("You look to the right of the room.  There's a giant hole in the wall.  There appears to be something burning.  There appears to be a faint silver gleam reflecting somewhere in the darkness.  ");
+readline.question("You look to the right of the room.  There's a giant hole in the wall.  You hear someoone---or something---cackle in the dark.  There appears to be a faint luminous glow somewhere in the darkness, and the smell of fire.");
 
 console.log("");
 
-console.log("You turn behind you.  You stare in disbelief at a giant frozen lake that stretches out beyond your gaze.  You don't see an end in sight. ");
+readline.question("You turn behind you.  You stare in disbelief at a giant frozen lake that stretches out beyond your gaze.  You don't see an end in sight. ");
 
 question();
-
-
-
-
-//make a function that will add 1 to {doorkey.have} and make another while loop that 
-/*while (doorkey.have === 0) {
-    doorlocked = true;
-    if (doorkey.have === 1) {
-        doorlocked = false;
-    }
-}*/
