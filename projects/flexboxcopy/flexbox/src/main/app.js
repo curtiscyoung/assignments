@@ -1,0 +1,18 @@
+import React, { Component } from 'react';
+import Header from "../header/header.js";
+import SideBar from "./sidebar";
+
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Header />
+                
+                <SideBar />
+
+            </div>
+        );
+    }
+}
+
+export default App;

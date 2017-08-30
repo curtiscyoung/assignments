@@ -1,3 +1,6 @@
+var button = $("#button"); 
+
+
 var goombaCost = 5;
 var bobombCost = 7;
 var cheepcheepCost = 11;
@@ -10,16 +13,15 @@ var cheepcheepAmount = 5;
 function grandTotal() {
     var total = (goombaCost * goombaAmount) + (bobombCost * bobombAmount) + (cheepcheepCost * cheepcheepAmount);
     console.log (total);
-    var cost = document.getElementById("totalCost");
+    var cost = $("#totalCost");
     var h1 = document.createElement("h1");
-    cost.appendChild(h1);
+    cost.append(h1);
     h1.innerHTML = total;
 
 
 }
 
-document.getElementById("button").addEventListener("click", grandTotal);
+button.click(grandTotal);
 
-addEventListener("input", function) {
-    parseInt(document.getElementById"goombainput")
-}
+
+

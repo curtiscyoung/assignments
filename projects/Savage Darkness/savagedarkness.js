@@ -14,7 +14,47 @@ var location = "center";
 var gorgonHead = 0;
 var ogre = 1;
 var nextLevel = 1;
-var stalkerLocation = "";
+var enemyLocation = "";
+var mirrorKnight = 1;
+
+
+function enemy(){
+    var encounter = [1,2,3];
+    var chance = encounter[Math.floor(Math.random() * encounter.length)];
+    if (chance === 1){
+        enemyLocation = "hole";
+    } else if (chance === 2) {
+        enemyLocation = "stairs";
+    } else {
+        enemyLocation = "maze";
+    }
+        if (location === enemyLocation){
+            console.log("The enemy attacks you!!");
+    }
+}
+
+function test(){
+    var encounter = [1,2,3];
+    var chance = encounter[Math.floor(Math.random() * encounter.length)];
+    if (chance === 1){
+        currentEnemy = goblin;
+    } else if (chance === 2) {
+        currentEnemy = skeletonKnight;
+    } else {
+        currentEnemy = insanePrisoner;
+    }
+    console.log(currentEnemy);
+}
+
+///////BATTLE FUNCTIONS///////
+
+
+
+
+
+
+
+//////////////////////////////
 
 
 //Aj suggested having a "stalker" that follows you throught out the game.  have a function that runs a random number, and if lands on a certain value, it changes the "stalkerlocation" variable, and then run a function that checks the players location.  if they match, run a function where the player encounters the stalker.
@@ -266,55 +306,19 @@ function turnBack() {
     question();
 
 }
-///////////////////////////////////////
-///////////////////////////////////////
 
-
-////////////////////////////////////////////
-//////////////FROZEN LAKE///////////////////
-function lakeChoice() {
-    console.log("");
-    readline.question("You walk out onto the dead, frozen lake.  You're not sure what you'll find out here....");
-    console.log("");
-    readline.question("You feel like you've been walking for miles....why did you come out here?  You feel at a daze, and your head droops from exhaustion. ");
-    console.log("");
-    readline.question("You are startled at what meets your gaze when your eyes meet the glassy surface...a dead merman... or....some sort merman knight.  He wears plated armor on his Torso and a scaly, sharply edged scales cover his enormous, almost metallic looking tail.  His eyes are ghost white.  His corpse is frozen beneath the lake.");
-    console.log("");
-    readline.question("You shudder with relief that the beast is dead, and continue walking.  You suddenly hear a thunderous CRACK and you see hairline fractures spread out across your feet.  You are knocked forward violently and it sends you to your knees.  You look back:");
-    console.log("");
-    readline.question("The mer-knight lives!  You only have a moment to absorb how bizarre the situation is.  He suddenly shoots a fireball at you?  AN UNDEAD FIREBALL SPITTING MERKNIGHT???  You only have a moment to comprehend how stupid of combination that is.  The fireball shoots straight for your face!!");
-    LakeShieldCheck();
-
-}
-
-function fireballDeath() {
-    console.log("");
-    console.log("The fireball is far too fast for you to dodge, and you possess nothing to stop or reflect it.  The blast completely destroys the upper half of your body.  Your inflamed bottom torso stands motionless.  The merknight goes back under the ice, and freezes up the hole he blew up open from under the ice back up again.  He can breath ice too?  Who the fuck wrote this?");
-    console.log("");
-    dead();
-
-}
-
-function fireballReact() {
-    var choice = ("What will you do? ")
-
-}
-
-
-
+////////////////////////
 //////////////////////////////////////////////////////////
 //////////////CENTER ROOM/////////////////////////////////
 function question() {
     console.log("");
-    var phase = readline.question("What will you do?  TYPE ONE OF THESE COMMANDS>>>>DOOR || STAIRS || HOLE || LAKE || LOCATION || PASSWORD         ").toLowerCase();
+    var phase = readline.question("What will you do?  TYPE ONE OF THESE COMMANDS>>>>DOOR || STAIRS || HOLE || LAKE || LOCATION || PASSWORD || INV || EQUIPPED        ").toLowerCase();
     if (phase === "door" || phase === "go through door" || phase === "enter door" || phase === "go into door" || phase === "open the door" || phase === "open door") {
         checkForKey();
     } else if (phase === "hole") {
         holeChoice();
     } else if (phase === "stairs") {
         checkForTorch();
-    } else if (phase === "lake") {
-        lakeChoice();
     } else if (phase === "location") {
         console.log("");
         readline.question("You are back in the center of the room.  There's a giant door and lumbering, unknown shape in front of it.  There are stairs that descend into total darkness to your left.  A frozen lake is behind you.  And there is a hole in the wall and what smells like fire coming from it.  ")
@@ -323,7 +327,8 @@ function question() {
         inventory();
         question();
     } else if (phase === "test") {
-        encounterW1();
+        test();
+        question();
 
     } else {
         console.log("");
@@ -353,6 +358,7 @@ function ogreDeathRight() {
     console.log("You run to the right.  The ogre anticipates your move and grabs you.  He holds you up to his face and you stare into his huge, bloodshot eyes.  He crushes you in his hands, you feel your entrails explode out every orifice.");
     dead();
     question();
+    
 }
 
 function noReactDeath() {
@@ -421,6 +427,15 @@ function checkForOrc() {
     } else {
         orcDead();
     }
+}
+
+function checkForKnight(){
+    if (mirrorKnight === 1){
+        cave();
+    } else {
+        emptyCave();
+    }
+
 }
 
 function checkForKey() {
@@ -638,7 +653,7 @@ function dead() {
 function holeChoice() {
     location = "hole";
     console.log("");
-    var choice = readline.question("The hole is open wide. You notice that it splits into two directions.  You see something shiny gleam within the darkness somewhere in the right cave....the key?  You hear someone mumbling in the other cave.  Perhaps someone who can help?  Or a madman waiting to slit your throat.  Alas, you must perservere. What will you do?  COMMANDS:  left, right, back, inv       ")
+    var choice = readline.question("The hole is open wide. You notice that it splits into two directions.  You see something gleam within the darkness somewhere in the right cave....the key?  You hear someone mumbling as well.  Perhaps someone who can help?  Or a madman waiting to slit your throat.  The other cave looks less dark...maybe there's an opening to the outside. What will you do?  COMMANDS>>>>>LEFT RIGHT BACK INV      ").toLowerCase();
     if (choice === "right") {
         checkForOrc();
     } else if (choice === "turn back") {
@@ -681,7 +696,7 @@ function pathChoice() {
     if (choice === "continue path") {
         pathBoulder();
     } else if (choice === "cave") {
-        cave();
+        checkForKnight();
     } else if (choice === "turn back") {
         console.log("");
         console.log("you got back the way you came")
@@ -695,6 +710,16 @@ function pathChoice() {
 }
 
 ///////////MIRROR KNIGHT FIGHT////////////////
+
+function emptyCave(){
+    console.log("");
+    readline.question("You enter the cave where you fought The Mirror Knight, but he isn't there anymore.  The reflective surfaces are gone, it's just an empty cave.")
+    console.log("");
+    readline.question("You turn back to the path.");
+    pathChoice();
+
+}
+
 
 function cave() {
     console.log("");
@@ -758,6 +783,7 @@ function MirrorWin3() {
     readline.question("YOU NOW POSSESS THE SHIELD");
     mirrorShield += 1;
     console.log("");
+    mirrorKnight--;
     character.exp = character.exp + 4;
     checkExp();
     inventory();
@@ -858,7 +884,5 @@ console.log("");
 readline.question("You look to the right of the room.  There's a giant hole in the wall.  You hear someoone---or something---cackle in the dark.  There appears to be a faint luminous glow somewhere in the darkness, and the smell of fire.");
 
 console.log("");
-
-readline.question("You turn behind you.  You stare in disbelief at a giant frozen lake that stretches out beyond your gaze.  You don't see an end in sight. ");
 
 question();

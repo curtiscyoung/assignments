@@ -4,7 +4,7 @@ var assert = chai.assert;
 
 let tests = {
     test = "abbbbbcccda",
-    test2 = "aaaaaabcccccc"
+    test2 = "aaaaaabcccccc",
     test3 = ""
 
 }
