@@ -2,7 +2,15 @@
     height: 500px;
     width: 100%;
     background-color: red;
-    
     top: 0;
     left: 0;
+}
+
+.hide{
+    display: none;
+
+}
+
+.show{
+    display: inherit;
 }

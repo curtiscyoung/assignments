@@ -4,7 +4,7 @@ import ListComponent from "./list-component"
 class ListContainer extends Component {
     render() {
         return (
-            <ListComponent uglythings={this.props.uglythings}/>            
+            <ListComponent editThing={this.props.editThing} uglythings={this.props.uglythings} deleteThing={this.props.deleteThing}/>            
             
         );
     }

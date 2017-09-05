@@ -1,0 +1,48 @@
+body{
+    background-image: url("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-169564.jpg");
+    background-position: 0%, 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+}
+
+.show{
+    display: inline;
+}
+
+.hide{
+    display: none;
+}
+
+h1{
+    text-align: center;
+    font-size: 100px;
+    color: ghostwhite;
+    text-shadow: 5px 5px #43150b;
+    font-family: '8BITWONDERNominal'; 
+    font-weight: normal; 
+    font-style: normal; 
+ 
+}
+
+button{
+    font-size: 50px;
+    display: inline;
+    text-align: center;
+    font-family: '8BITWONDERNominal'; 
+    font-weight: normal; 
+    font-style: normal;
+    text-shadow: 5px 5px #43150b; 
+    color: ghostwhite;
+    background: none;
+    box-shadow: 3px 3px black;
+    margin-left: 5px;
+    border: none;
+ 
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
