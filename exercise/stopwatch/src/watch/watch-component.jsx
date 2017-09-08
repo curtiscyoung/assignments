@@ -4,7 +4,17 @@ class WatchComponent extends Component {
     render() {
         return (
             <div>
-                <h1>{this.props.counter}</h1>
+                <div className="watch">
+                <div>
+                <h1>{this.props.mins}: </h1>
+                </div>
+                <div>
+                <h1>{this.props.secs}: </h1>
+                </div>
+                <div>
+                <h1>{this.props.mils} </h1>
+                </div>
+                </div>
                 <div className="buttons">
                 <button className={this.props.toggled ? "show" : "hide"} onClick={this.props.timer}>START</button>
                 <button onClick={this.props.handleReset}>RESET</button>

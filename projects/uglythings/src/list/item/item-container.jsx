@@ -27,9 +27,12 @@ class ItemContainer extends Component {
     handleEdit = (e) => {
         e.preventDefault();
         this.props.editThing(this.props.index, this.state.inputs)
+    }
 
-
-        }
+    handleDelete = (e) => {
+        e.preventDefault();
+        this.props.deleteThing(this.props.index)
+    }
     
     
     handleInput(e){

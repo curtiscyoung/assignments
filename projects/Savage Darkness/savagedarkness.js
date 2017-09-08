@@ -5,7 +5,7 @@ var sword = 0;
 var swordUpgrade = false;
 var ancientSword = 0;
 var magicSword = 0;
-var doorkey = 0;
+var doorkey = 1;
 var boss = true;
 var orc = 1;
 var torch = 0;
@@ -18,25 +18,25 @@ var enemyLocation = "";
 var mirrorKnight = 1;
 
 
-function enemy(){
-    var encounter = [1,2,3];
+function enemy() {
+    var encounter = [1, 2, 3];
     var chance = encounter[Math.floor(Math.random() * encounter.length)];
-    if (chance === 1){
+    if (chance === 1) {
         enemyLocation = "hole";
     } else if (chance === 2) {
         enemyLocation = "stairs";
     } else {
         enemyLocation = "maze";
     }
-        if (location === enemyLocation){
-            console.log("The enemy attacks you!!");
+    if (location === enemyLocation) {
+        console.log("The enemy attacks you!!");
     }
 }
 
-function test(){
-    var encounter = [1,2,3];
+function test() {
+    var encounter = [1, 2, 3];
     var chance = encounter[Math.floor(Math.random() * encounter.length)];
-    if (chance === 1){
+    if (chance === 1) {
         currentEnemy = goblin;
     } else if (chance === 2) {
         currentEnemy = skeletonKnight;
@@ -268,12 +268,12 @@ function levelUp() {
         character.int = character.int + 5;
         character.str = character.str + 0;
         character.def = character.def + 2;
+
     }
     console.log(name + " " + lastname + ": ")
     console.log(character);
     nextLevel = nextLevel * 2;
 }
-
 
 
 
@@ -283,6 +283,7 @@ function levelUp() {
 
 function doorUnlock() {
     console.log("The door swings open and you see a dark, dark night.  You aren't sure what lies ahead.  You leave the room.")
+    finalBoss();
 }
 
 
@@ -294,6 +295,31 @@ function doorLocked() {
 
 }
 
+function finalBoss() {
+    var count = 0;
+    var interval = setInterval(() => {
+        count++
+        console.log(count);
+    }, 1000)
+    if (count === 3) {
+        console.log("you take damage!!")
+        clearInterval(interval);
+        damage();
+    }
+    var choice = readline.question("the enemy attacks you")
+    if (choice === "slash") {
+        clearInterval(interval);
+        console.log("you attacked in time!")
+    } else {
+        console.log("you miss!!")
+    }
+
+}
+
+
+function damage() {
+    console.log("you take damage!!!")
+}
 
 /////////////////////////////////////////
 /////////////////////////////////////////
@@ -358,7 +384,7 @@ function ogreDeathRight() {
     console.log("You run to the right.  The ogre anticipates your move and grabs you.  He holds you up to his face and you stare into his huge, bloodshot eyes.  He crushes you in his hands, you feel your entrails explode out every orifice.");
     dead();
     question();
-    
+
 }
 
 function noReactDeath() {
@@ -429,8 +455,8 @@ function checkForOrc() {
     }
 }
 
-function checkForKnight(){
-    if (mirrorKnight === 1){
+function checkForKnight() {
+    if (mirrorKnight === 1) {
         cave();
     } else {
         emptyCave();
@@ -711,7 +737,7 @@ function pathChoice() {
 
 ///////////MIRROR KNIGHT FIGHT////////////////
 
-function emptyCave(){
+function emptyCave() {
     console.log("");
     readline.question("You enter the cave where you fought The Mirror Knight, but he isn't there anymore.  The reflective surfaces are gone, it's just an empty cave.")
     console.log("");

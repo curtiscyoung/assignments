@@ -13,8 +13,20 @@ body{
 .hide{
     display: none;
 }
+.watch{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    min-width: 1000px;
 
-h1{
+}
+.watch div{
+    display: inline-block;
+    min-width: 300px;
+
+}
+
+.watch div h1{
     text-align: center;
     font-size: 100px;
     color: ghostwhite;
@@ -22,7 +34,7 @@ h1{
     font-family: '8BITWONDERNominal'; 
     font-weight: normal; 
     font-style: normal; 
- 
+    min-width: 300px;
 }
 
 button{

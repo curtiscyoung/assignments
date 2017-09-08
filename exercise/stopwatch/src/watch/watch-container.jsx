@@ -23,7 +23,7 @@ class WatchContainer extends Component {
         if (this.props.timeOn === false) {
             this.interval = setInterval(() => {
                 this.props.start();
-            }, 1000)
+            }, 10)
             this.handleMilliseconds();
         }
     }
@@ -67,7 +67,9 @@ class WatchContainer extends Component {
                 millisecond={this.props.millisecond}
                 counter={this.props.counter}
                 start={this.props.start}
-                milli={this.props.milli}
+                mils={this.props.mils}
+                mins={this.props.mins}
+                secs={this.props.secs}
                 handleReset={this.handleReset}
                 handleToggle={this.handleToggle}
                 toggled={this.props.toggled}
