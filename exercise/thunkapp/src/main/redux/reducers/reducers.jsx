@@ -3,7 +3,7 @@ let defaultState = {
 
 }
 
-let mainReducer = (state = defaultState, action) => {
+const mainReducer = (state = defaultState, action) => {
     switch (action.type) {
         case "SET_DATA":
             return { todos: action.data }

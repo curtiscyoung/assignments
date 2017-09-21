@@ -27,6 +27,11 @@ class ItemContainer extends Component {
         })
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.editTodo(this.state.inputs, this.props.todo.id)
+    }
+
     render() {
         return (
             <ItemComponent todo={this.props.todo} />

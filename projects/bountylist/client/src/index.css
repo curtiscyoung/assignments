@@ -1,0 +1,65 @@
+.show{
+    display: inherit;
+}
+.hide{
+    display: none;
+}
+
+h1, p{
+    font-family: 'Nova Square', cursive;
+    color: ghostwhite;
+    font-family: 'Nova Square', cursive;
+}
+
+body{
+    background-color: black;
+}
+.header{
+    
+    height: 500px;
+    
+}
+
+
+
+img{
+    height: 500px;
+    width: 400px;
+    
+    
+
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 350px;
+    font-size: 100px;
+    font-family: 'Nova Square', cursive;
+    color: ghostwhite;
+    text-shadow: 3px 3px black;
+}
+
+input{
+    background: none;
+    color: darkgreen;
+    border: none;
+    font-family: 'Nova Square', cursive;
+}
+
+body{
+    background-image: url("../src/images/bobafettedited.png");
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+/* font-family: 'Frijole', cursive;
+font-family: 'Bungee Inline', cursive;
+font-family: 'Nova Square', cursive;
+font-family: 'Bungee Shade', cursive;
+font-family: 'Wallpoet', cursive;
+font-family: 'Geostar Fill', cursive; */

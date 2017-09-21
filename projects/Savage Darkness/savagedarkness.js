@@ -297,18 +297,10 @@ function doorLocked() {
 
 function finalBoss() {
     var count = 0;
-    var interval = setInterval(() => {
-        count++
-        console.log(count);
-    }, 1000)
-    if (count === 3) {
-        console.log("you take damage!!")
-        clearInterval(interval);
-        damage();
-    }
     var choice = readline.question("the enemy attacks you")
+    var interval = setTimeout(choice, 3000)
     if (choice === "slash") {
-        clearInterval(interval);
+        clearTimeout(interval);
         console.log("you attacked in time!")
     } else {
         console.log("you miss!!")
