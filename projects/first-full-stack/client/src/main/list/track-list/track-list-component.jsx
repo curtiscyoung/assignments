@@ -10,8 +10,11 @@ class TrackListComponent extends Component {
     
     render() {
         return (
-            <div className="trackList">
+            <div className="track-list col-xs-3 col-offset-2">
+                <h3 className="track-reviews"> TRACKS </h3>
+                <div className="justify">
                 {this.genTracks()}
+                </div>
             </div>
         );
     }

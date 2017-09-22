@@ -30,7 +30,7 @@ reviewRoute.route("/")
 
     reviewRoute.route("/:id")
         .delete((req, res) =>{
-            reviewModel.findOneAndRemove(req.params.id, (err, review) =>{
+            reviewModel.findByIdAndRemove(req.params.id, (err, review) =>{
                 if (err){
                     res.status(500).send(err);
                 } else if (review === null){

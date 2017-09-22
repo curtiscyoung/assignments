@@ -11,7 +11,8 @@ class AlbumListComponent extends Component {
     
     render() {
         return (
-            <div className="albumList">
+            <div className="albumList col-xs-5">
+              <h3 className="albumReviews">ALBUM REVIEWS</h3>
               {this.genAlbums()}  
             </div>
         );

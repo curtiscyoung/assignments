@@ -1,103 +1,36 @@
+
+/* BACKGROUND */
 body{
-    background-color: darkblue;
-    background-image: url("./images/scuba-diving.jpg");
+    background-color: ghostwhite;
+    background-image: url("./main/images/scuba-diving.jpg");
     background-position: 0% 25%;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-
 }
-
-.trackList{
-   display: inline-block;
-   height: 400px;
-   width: 400px;
-   margin-top: 75px;
-}
-.albumList{
-    display: inline-block;
-    height: 400px;
-    width: 400px;
-    margin-top: 75px;
-    border: 3px solid black;
-    background-color: ghostwhite;
-    position: relative;
-}
-
-.lists{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
-
-span{
-    margin:  0px 40px 0px 40px;
-    display: inline-block;
-    margin-top: 10px;
-}
-
-img{
-    height: 250px;
-    width:  250px;
-    display: inline-block;
     
-}
 
-.navBar{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    font-family: 'Poppins', sans-serif;
 
-}
 
-.nameAndArtist{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 0;
-    position: relative;
-}
-
+/* NAVBAR */
 .header{
     height: 45px;
-    background-color: ghostwhite;
+    background-color:black;
     position: fixed;
+    z-index: 3;
+    opacity: .8;
+    
     
 }
 
 .title{
     display: inline-block;
     font-family: 'Rubik Mono One', cursive;
+    color: ghostwhite
 }
 
-.albumItem{
-    height: 125px;
-    width: 125px;
-    margin: 10px;
-    display: inline-block;
-    transition: opacity 1s;
-    opacity: 1;
-    position: relative;
-}
-
-.albumItem:hover{
-    opacity: 0;
-}
-
-.albumCover{
-    width: 50%;
-    display: inline-block;
-    background-color: ghostwhite;
-    position: relative;
-}
-
-.albumCover:hover{
-   background-color: ghostwhite;
-}
-
-.review{
-    margin-top: 50px;
+.logo{
+    min-width: 30px;
 }
 
 .icon{
@@ -106,15 +39,252 @@ img{
     top:0;
 }
 
-.footer{
-    height: 90px;
-    background-color: ghostwhite;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+
+.navItem{
+    margin-right: 3vh;
+    display: inline-block;
+    margin-top: 10px;
+    min-width: 70px;
+    color: ghostwhite;
+    
+}
+@media (max-width: 675px){
+    .navItem{
+        margin: 10px 30px 10px 30px; 
+    }
+}
+
+.navBar{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    color: ghostwhite;
 
 }
 
+
+/* LISTS */
+.albumReviews{
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 3px solid ghostwhite;
+    padding-bottom: 5px;
+    color: ghostwhite
+}
+
+.track-reviews{
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 3px solid ghostwhite;
+    padding-bottom: 5px;
+    color: ghostwhite
+}
+
+.track-list{
+   display: inline-block;
+   height: 65vh;
+   margin-top: 75px;
+   text-align: center;
+   background-color: black;
+   margin-left: 2vh;
+   border: 3px solid white;
+   overflow: hidden;
+}
+.albumList{
+    display: inline-block;
+    height: 65vh;
+    margin-top: 75px;
+    border: 3px solid ghostwhite;
+    background-color: black;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.lists{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    
+}
+
+/* LIST ITEMS */
+.nameAndArtist{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    font-family: 'Poppins', sans-serif;
+    font-size: 2vh;
+    color: ghostwhite
+}
+.albumItem{
+    height: 22.5vh;
+    width: 22.5vh;
+    margin: 1vh;
+    display: inline-block;
+    transition: opacity 1s;
+    opacity: 1;
+    position: relative;
+}
+@media (max-width: 700px){
+    .albumItem{
+       height: 100px;
+       width: 100px;
+    }
+}
+.albumItem:hover{
+    opacity: 0;
+}
+
+
+.albumCover{
+    width: 50%;
+    display: inline-block;
+    background-color:black;
+    position: relative;
+    text-align: center;
+}
+
+.track-name{
+    font-size: 2.8vh;
+    color: ghostwhite;
+    transition: 500ms;
+}
+.track-name:hover{
+    color: gold;
+}
+.justify{
+    text-align: justify;
+}
+
+
+/* ALBUM REVIEW PAGE */
+.review{
+    display: flex;
+    margin-top: 20px;
+    height: 100vh;
+    background: rgba(2, 2, 6, .8);
+    margin-bottom: 100px;
+    flex-direction: column;
+   
+   
+}
+.rating{
+    float: right;
+    margin-right: 20px;
+    font-size: 12vh;
+    transform: translateY(60%);
+    border-radius: 50%;
+    padding: 0px 30px;
+    border: 2px solid ghostwhite;
+    color: ghostwhite;
+    text-shadow: 2px 2px black;
+    
+    
+}
+
+.album-title{
+    transform: translateX(-25%);
+    font-family: 'Poppins', sans-serif;
+    font-size: 12vh;
+    text-shadow: 2px 2px black;
+    position: absolute;
+    left: 10%;
+    color:ghostwhite;
+}
+
+.artist{
+    position: absolute;
+    left: 2.5%;
+    font-size: 6vh;
+    margin-top: 20vh;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 2px 2px black;
+    color: ghostwhite
+}
+
+.review-album-image{
+    height: 40vh;
+    width: 40vh;
+    float: right;
+    opacity: 1;
+    
+}
+
+.review-header{
+    margin-top: 70px;
+    height: 60vh;
+    background: rgba(2, 2, 6, .8);
+    display:flex;
+    flex-direction: row-reverse;
+    /* opacity: .9; */
+}
+
+.image-and-rating{
+    margin-top: 5vh;
+    transform: translateX(15%);
+    opacity: 2;
+    min-width: 50vh;
+    /* margin-left: 18vh; */
+}
+
+.review-text{
+    padding: 5vh;
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    text-align: justify;
+    color: ghostwhite;
+}
+
+
+/* POST */
+input::placeholder{
+    color: lightblue;
+}
+
+input{
+    margin-top: 2vh;
+    background: rgba(2, 2, 6, .8);
+    color: ghostwhite;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+textarea{
+    background: rgba(2, 2, 6, .8);
+    color: ghostwhite;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+}
+.post{
+    text-align: center;
+    margin-top: 12vh;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+}
+
+/* .site-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+} */
+
+
+/* FOOTER */
+/* .footer{
+    height: 20vh;
+    background: rgba(232, 232, 232, .9);
+
+    
+} */
+
+
+
+/* FONTS */
 /* font-family: 'Ubuntu', sans-serif;
 font-family: 'Poppins', sans-serif;
 font-family: 'Dosis', sans-serif; 

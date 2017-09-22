@@ -5,7 +5,8 @@ class TrackItemComponent extends Component {
     render() {
         return (
             <div>
-               <Link to={`/track/${this.props.id}`}><h1>{this.props.track.artist}</h1></Link> 
+               <Link to={`/track/${this.props.id}`}><p className="track-name">{this.props.track.artist}-{this.props.track.songName}</p></Link> 
+            
             </div>
         );
     }

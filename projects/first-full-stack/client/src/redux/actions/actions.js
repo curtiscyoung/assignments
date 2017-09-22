@@ -64,6 +64,7 @@ export function postReview(review){
         axios.post(url, review)
             .then((response) =>{
                 dispatch(loadData());
+                window.location.replace("http://localhost:3000");
             })
             .catch((err) =>{
                 console.log(err)
@@ -76,6 +77,7 @@ export function deleteReview(id){
         axios.delete(url + id)
             .then((response) =>{
                 dispatch(loadData());
+                window.location.replace("http://localhost:3000");
             })
             .catch((err) =>{
                 console.log(err);
