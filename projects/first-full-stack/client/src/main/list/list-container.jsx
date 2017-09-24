@@ -17,9 +17,11 @@ class ListContainer extends Component {
     }
     render() {
         return (
-            <div className="lists">
+            <div className="lists container-fluid">
+                <div className="row">
                 <AlbumListComponent albums={this.filterReviews("album")} />
                 <TrackListComponent tracks={this.filterReviews("track")}/>
+                </div>
             </div>
         );
     }

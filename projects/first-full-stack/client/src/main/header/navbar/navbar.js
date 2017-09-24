@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import {slide as Menu} from "react-burger-menu"
 // import { Navbar, NavItem, NavDropdown, MenuItem, Nav } from "react-bootstrap";
 // import { IndexLinkContainer } from "react-router-bootstrap";
 
@@ -7,24 +8,32 @@ import { Link } from "react-router-dom";
 
 
 class NavBar extends Component {
-    // showSettings (event) {
-    //     event.preventDefault();
+    showSettings (event) {
+        event.preventDefault();
     
-    // }
+    }
     render() {
         return (
+            <div>
             <div className="navBar">
-                <div className="logo">
-                    <p className="title">DIVE</p>
-                    <img className="icon" src={require("../../images/diverhelmetinverted.png")} alt="diver icon" />
-                </div>
+                
+                <Menu width={300} isOpen={false} right>
                 <Link to="/"><span className="navItem">Reviews</span></Link>
                 <Link to="/newmusic"> <span className="navItem">Dive In</span></Link>
                 <Link to="/bestof">  <span className="navItem">Best of</span></Link>
                 <Link to="/news"> <span className="navItem">News</span></Link>
                 <Link to="/post"><span className="navItem">Post</span></Link>
                     <span onClick={this.showSettings}></span>
+               </Menu>
                
+               
+               
+              </div>
+            
+              <div className="logo">
+               <p className="title">DIVE</p>
+                    <img className="icon" src={require("../../images/diverhelmetinverted.png")} alt="diver icon" />    
+                </div>
             </div>
        
 //         <Navbar className="navbar-static-top" inverse collapseOnSelect>

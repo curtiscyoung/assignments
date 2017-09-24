@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+// import { YouTube } from "react-youtube";
 
 class TrackReview extends Component {
     
     render() {
+        const opts = {
+            height: '390',
+            width: '640',
+            autoplay: 1
+            }
         return (
             <div className="container">
                 <div className="row">
@@ -19,6 +25,7 @@ class TrackReview extends Component {
                         <p className="review-text">{this.props.track.review}</p>
                         
 
+                         
                     </div>
                 </div>
             </div>

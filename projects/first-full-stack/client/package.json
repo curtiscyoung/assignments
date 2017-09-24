@@ -12,6 +12,7 @@
     "react-router-bootstrap": "^0.24.4",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.13",
+    "react-youtube": "^7.4.0",
     "redux": "^3.7.2",
     "thunk": "0.0.1"
   },

@@ -1,24 +1,40 @@
 
 /* BACKGROUND */
 body{
-    background-color: ghostwhite;
+    /* background-color: ghostwhite;
     background-image: url("./main/images/scuba-diving.jpg");
     background-position: 0% 25%;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 100vh; */
+    background: #2C3E50;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+@media(max-width: 850px){
+    body{
+    background-color: ghostwhite;
+    background-image: url("http://www.utahpeoplespost.com/wp-content/uploads/2014/03/ocean.jpg");
+    background-position: 0% 25%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    }
+}
+
+
     
 
 
 
 /* NAVBAR */
 .header{
-    height: 45px;
+    height: 12vh;
     background-color:black;
     position: fixed;
     z-index: 3;
     opacity: .8;
+    margin-bottom: 80vh;
     
     
 }
@@ -31,11 +47,21 @@ body{
 
 .logo{
     min-width: 30px;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-left: 10vh;
+    font-size: 7vh;
+}
+@media (max-width: 573px){
+    .logo{
+        min-width: 32vh;
+       
+    }
 }
 
 .icon{
-    height: 45px;
-    width: 45px;
+    height: 12vh;
+    width: 12vh;
     top:0;
 }
 
@@ -46,23 +72,34 @@ body{
     margin-top: 10px;
     min-width: 70px;
     color: ghostwhite;
-    
+    transition: 1s;
+    font-size: 4vh;
+    margin-bottom: 8vh;
+}
+.navItem:hover{
+    color: gold;
 }
 @media (max-width: 675px){
     .navItem{
-        margin: 10px 30px 10px 30px; 
+         
     }
 }
 
 .navBar{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    text-align: center;
+    /* display: flex; */
+    text-align: center; 
     font-family: 'Poppins', sans-serif;
-    font-weight: bolder;
+    font-weight: bolder; 
     color: ghostwhite;
-
+    font-size: 5vh;
+    position: absolute;
+    top: 0;
+    
+}
+@media (max-width: 630px){
+    .navBar{
+        font-size: 4vh;
+    }
 }
 
 
@@ -71,28 +108,27 @@ body{
     font-family: 'Poppins', sans-serif;
     border-bottom: 3px solid ghostwhite;
     padding-bottom: 5px;
-    color: ghostwhite
+    color: ghostwhite;
+    font-size: 7vh;
 }
 
 .track-reviews{
     font-family: 'Poppins', sans-serif;
     border-bottom: 3px solid ghostwhite;
     padding-bottom: 5px;
-    color: ghostwhite
+    font-size: 7vh;
+    color: ghostwhite;
 }
 
 .track-list{
-   display: inline-block;
    height: 65vh;
    margin-top: 75px;
    text-align: center;
    background-color: black;
-   margin-left: 2vh;
    border: 3px solid white;
    overflow: hidden;
 }
 .albumList{
-    display: inline-block;
     height: 65vh;
     margin-top: 75px;
     border: 3px solid ghostwhite;
@@ -101,11 +137,17 @@ body{
     text-align: center;
     overflow: hidden;
 }
+@media (max-width: 767px){
+    .albumList{
+    height: 85vh;
+    }
+}
 
 .lists{
     display: flex;
     justify-content: center;
     flex-direction: row;
+    margin-top: 10vh;
     
 }
 
@@ -128,10 +170,10 @@ body{
     opacity: 1;
     position: relative;
 }
-@media (max-width: 700px){
+@media (max-width: 767px){
     .albumItem{
-       height: 100px;
-       width: 100px;
+       height: 28.5vh;
+       width: 28.5vh;
     }
 }
 .albumItem:hover{
@@ -160,14 +202,54 @@ body{
 }
 
 
+/* BURGER MENU */
+.bm-burger-button {
+    position: fixed;
+    width: 5vh;
+    height: 5vh;
+    left: 26px;
+    top: 18px;
+  }
+
+  .bm-burger-bars {
+    background: #373a47;
+  }
+  
+  /* .bm-cross-button {
+    height: 500px;
+    width: 500px;
+  } */
+
+  .bm-menu {
+    background: #373a47;
+    padding: 1.5em 0em ;
+    font-size: 1.15em;
+  }
+
+  /* .bm-morph-shape {
+    fill: #373a47;
+  } */
+
+  .bm-item-list {
+    color: #b8b7ad;
+    padding: 0.8em;
+  }
+
+  /* .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  } */
+
+
 /* ALBUM REVIEW PAGE */
 .review{
     display: flex;
-    margin-top: 20px;
-    height: 100vh;
+    margin-top: 5vh;
+    height: 80%;
     background: rgba(2, 2, 6, .8);
     margin-bottom: 100px;
     flex-direction: column;
+    overflow: auto;
+    
    
    
 }
@@ -181,8 +263,11 @@ body{
     border: 2px solid ghostwhite;
     color: ghostwhite;
     text-shadow: 2px 2px black;
-    
-    
+    transition: 1s;
+}
+.rating:hover{
+    color: gold;
+    border: 2px solid gold;
 }
 
 .album-title{
@@ -194,7 +279,33 @@ body{
     left: 10%;
     color:ghostwhite;
 }
+@media (max-width:868px){
+    .album-title{
+        font-size: 10vh;
+    }
+    .rating{
+        font-size: 50px;
+        
+    }
+    .artist{
+        font-size: 4vh;
+    }
+}
 
+@media (max-width: 820px){
+    .album-title{
+        font-size: 8vh;
+    }
+    .artist{
+        font-size: 1vh;
+    }
+}
+
+@media (max-width: 780px){
+    .album-title{
+        font-size: 7vh;
+    }
+}
 .artist{
     position: absolute;
     left: 2.5%;
@@ -213,15 +324,27 @@ body{
     
 }
 
-.review-header{
-    margin-top: 70px;
-    height: 60vh;
-    background: rgba(2, 2, 6, .8);
-    display:flex;
-    flex-direction: row-reverse;
-    /* opacity: .9; */
+@media (max-width:838px){
+    .review-album-image{
+        height: 34vh;
+        width: 34vh;
+    }
 }
 
+
+.review-header{
+    margin-top: 15vh;
+    height: 60vh;
+    background: rgba(6, 6, 6, .8);
+    display:flex;
+    flex-direction: row-reverse;
+    transition: 1s;
+}
+
+.review-header:hover{
+    background: rgba(200, 200, 200, .8);
+    
+}
 .image-and-rating{
     margin-top: 5vh;
     transform: translateX(15%);
@@ -231,11 +354,13 @@ body{
 }
 
 .review-text{
-    padding: 5vh;
+    padding: 4vh;
     display: flex;
-    font-family: 'Poppins', sans-serif;
+    font-family: Helvetica;
     text-align: justify;
     color: ghostwhite;
+    font-size: 3vh;
+    letter-spacing: .13vh;
 }
 
 
@@ -274,13 +399,25 @@ textarea{
 } */
 
 
-/* FOOTER */
-/* .footer{
-    height: 20vh;
-    background: rgba(232, 232, 232, .9);
-
+/* FOOTER */ 
+.footer{
+    height: 30vh;
+    background: rgba(6, 6, 2, .8);
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: row-reverse;
     
-} */
+
+}
+
+.icon-footer{
+    height: 20vh;
+    width:20vh;
+    opacity: .8;
+    transform: translateY(50%)
+
+
+}
 
 
 

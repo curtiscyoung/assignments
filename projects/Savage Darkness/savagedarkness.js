@@ -297,14 +297,16 @@ function doorLocked() {
 
 function finalBoss() {
     var count = 0;
-    var choice = readline.question("the enemy attacks you")
-    var interval = setTimeout(choice, 3000)
+    var choice;
+    var interval = setTimeout(()=>{ 
+        console.log("you miss")
+    }, 3000)
+    choice = readline.question("the enemy attacks you")
     if (choice === "slash") {
         clearTimeout(interval);
         console.log("you attacked in time!")
-    } else {
-        console.log("you miss!!")
-    }
+    } 
+    
 
 }
 
