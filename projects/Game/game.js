@@ -13,7 +13,7 @@ while (lastname === "") {
 
 var gender = readline.question("Is thou art a man or woman?  ").toLowerCase();
 
-while (gender != "boy" && gender != "girl" && gender != "man" && gender != "woman" && gender != "tranny") {
+while (gender != "boy" && gender != "girl" && gender != "man" && gender != "woman" && gender != "intersex") {
     gender = readline.question("Aye, quit fookin around Laddy tell me what ya got down there   ");
 }
 
@@ -32,8 +32,8 @@ if (gender === "boy" || gender === "man") {
     console.log("Thank you, Lord " + lastname);
 } else if (gender === "girl" || gender === "woman") {
     console.log("Thank you, Lady " + lastname);
-} else if (gender === "tranny") {
-    console.log("Oh...well...we're respectful of all kinds of people here i really didn't mean to offend please forgive me everyone has  a right to choose what they do with their bodies this seems a little longwinded I'm talking too much aren't I oh well thank you errrr WhateverTheFuckYouAre " + lastname);
+} else if (gender === "intersex") {
+    console.log("Oh...well...we're respectful of all kinds of people here " + lastname);
 }
 
 //give each class an ability they can use with a function within the object
